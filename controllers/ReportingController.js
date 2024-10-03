@@ -54,10 +54,10 @@ exports.generateSalesReport = async (req, res) => {
     // Modify the data to include the item name and user name
     const transactionsWithNames = salesTransactions.map(transaction => ({
       _id: transaction._id,
-      itemName: transaction.itemId.name,  // Add item name
+      itemName: transaction.itemId ? transaction.itemId.name : 'Unknown Item', // Check for itemId
       type: transaction.type,
       quantity: transaction.quantity,
-      userName: transaction.userId.name,  // Add user name
+      userName: transaction.userId ? transaction.userId.name : 'Unknown User', // Check for userId
       date: transaction.date,
     }));
 
@@ -84,10 +84,8 @@ exports.generateSalesReport = async (req, res) => {
   }
 };
 
-// Generate PDF Report
 
-
-// Generate Purchase Orders Report (CSV)
+// Generate Purchase Orders Report
 exports.generatePurchaseOrdersReport = async (req, res) => {
   console.log("Generating purchase orders report...");  
   try {
@@ -99,10 +97,10 @@ exports.generatePurchaseOrdersReport = async (req, res) => {
     // Prepare data for the CSV
     const purchaseOrdersWithNames = purchaseOrders.map(order => ({
       _id: order._id,
-      itemName: order.itemId.name,
+      itemName: order.itemId ? order.itemId.name : 'Unknown Item', // Check for itemId
       type: order.type,
       quantity: order.quantity,
-      userName: order.userId.name,
+      userName: order.userId ? order.userId.name : 'Unknown User', // Check for userId
       date: order.date,
     }));
 
