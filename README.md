@@ -12,7 +12,7 @@ A robust **Inventory Management System (IMS)** built with **Node.js**, **MongoDB
    - Track stock movements (purchases, sales, returns).
 
 3. **Reporting**:
-   - Generate and email inventory reports (CSV/PDF).
+   - Generate and email inventory reports (CSV).
 
 4. **Notifications**:
    - Alerts for low stock and key transactions using Kafka.
